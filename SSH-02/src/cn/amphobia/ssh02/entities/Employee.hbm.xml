@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="cn.amphobia.ssh02.entities.Employee" table="SSH_EMPLOYEE">
+		<!-- 主键设置 -->
+		<id name="id" column="ID" type="java.lang.Integer">
+			<generator class="native"></generator>
+		</id>
+		
+		<!-- 其他属性设置 -->
+		<property name="lastName" column="LAST_NAME" type="java.lang.String"></property>
+		<property name="email" column="EMAIL" type="java.lang.String"></property>
+		<property name="birth" column="BIRTH" type="java.util.Date"></property>
+		<property name="createTime" column="CREATE_TIME" type="java.util.Date"></property>
+		
+		<!-- 单项多对一的关联 -->
+		<many-to-one name="department" column="DEPARTMENT_ID"
+			 class="cn.amphobia.ssh02.entities.Department"></many-to-one>
+	</class>
+</hibernate-mapping>

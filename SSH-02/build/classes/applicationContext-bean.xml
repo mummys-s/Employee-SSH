@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="employeeAction" class="cn.amphobia.ssh02.action.EmployeeAction" scope="prototype">
+		<!-- 注入EmployeeService对象 -->
+		<property name="employeeService" ref="employeeService"></property>
+		<!-- 注入 DepartmentService对象 -->
+		<property name="departmentService" ref="departmentService"></property>
+	</bean>
+	
+	<!-- 创建EmployeeDao对象 -->
+	<bean id="employeeDao" class="cn.amphobia.ssh02.dao.EmployeeDao">
+		<!-- 注入sessionFactory -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 创建EmployeeService对象 -->
+	<bean id="employeeService" class="cn.amphobia.ssh02.service.EmployeeService">
+		<!-- 注入EmployeeDao对象 -->
+		<property name="employeeDao" ref="employeeDao"></property>
+	</bean>
+	
+	<!-- 创建DepartmentDao对象 -->
+	<bean id="departmentDao" class="cn.amphobia.ssh02.dao.DepartmentDao">
+		<!-- 注入sessionFactory -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- 创建DepartmentService对象 -->
+	<bean id="departmentService" class="cn.amphobia.ssh02.service.DepartmentService">
+		<!-- 注入DepartmentDao对象 -->
+		<property name="departmentDao" ref="departmentDao"></property>
+	</bean>
+
+</beans>
